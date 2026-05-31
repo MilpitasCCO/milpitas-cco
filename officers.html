@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Officers — Milpitas CCO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="nav.css"/>
+<style>
+.officers-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 3rem;
+}
+.officer-card {
+  background: var(--white); border-radius: 18px;
+  border: 1px solid var(--cream2); overflow: hidden;
+  transition: box-shadow 0.25s, transform 0.25s;
+}
+.officer-card:hover { box-shadow: 0 20px 48px rgba(27,45,91,0.13); transform: translateY(-5px); }
+.officer-card-top {
+  background: linear-gradient(135deg, var(--navy) 0%, #2a4a8a 100%);
+  padding: 2rem; text-align: center;
+  position: relative; overflow: hidden;
+}
+.officer-card-top::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(212,168,67,0.15) 0%, transparent 60%);
+}
+.officer-avatar {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: rgba(212,168,67,0.2); border: 2px solid rgba(212,168,67,0.4);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem; margin: 0 auto 1rem; position: relative;
+}
+.officer-role-badge {
+  display: inline-block;
+  background: rgba(212,168,67,0.2); border: 1px solid rgba(212,168,67,0.4);
+  color: var(--gold); font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0.3rem 0.8rem; border-radius: 999px;
+  position: relative;
+}
+.officer-card-bottom { padding: 1.5rem; }
+.officer-name {
+  font-family: 'Fraunces', serif; font-size: 1.3rem;
+  font-weight: 800; color: var(--navy); margin-bottom: 0.75rem;
+}
+.officer-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.7; }
+.officer-duties {
+  margin-top: 1rem; display: flex; flex-direction: column; gap: 0;
+}
+.duty-item {
+  font-size: 0.78rem; color: var(--muted); padding: 0.5rem 0;
+  border-bottom: 1px solid var(--cream2);
+  display: flex; gap: 0.5rem; align-items: flex-start; line-height: 1.5;
+}
+.duty-item:first-child { border-top: 1px solid var(--cream2); }
+.duty-bullet { color: var(--gold); flex-shrink: 0; font-size: 0.7rem; margin-top: 0.15rem; }
+
+/* advisor card */
+.advisor-card {
+  background: linear-gradient(135deg, var(--navy) 0%, #2a4a8a 100%);
+  border-radius: 18px; padding: 2.5rem;
+  display: flex; align-items: center; gap: 2rem;
+  margin-top: 2rem; flex-wrap: wrap;
+}
+.advisor-icon-wrap {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: rgba(212,168,67,0.15); border: 2px solid rgba(212,168,67,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2rem; flex-shrink: 0;
+}
+.advisor-info .advisor-tag {
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem;
+}
+.advisor-info .advisor-name {
+  font-family: 'Fraunces', serif; font-size: 1.6rem;
+  font-weight: 800; color: #fff; margin-bottom: 0.35rem;
+}
+.advisor-info p { font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
+
+/* elections section */
+.elections-block {
+  background: var(--cream); border-radius: 16px; padding: 2rem 2.5rem;
+  border: 1px solid var(--cream2); margin-top: 3rem;
+}
+.elections-block h3 { font-family:'Fraunces',serif; font-size:1.3rem; font-weight:800; color:var(--navy); margin-bottom:1rem; }
+.elections-block p, .elections-block li { font-size:0.86rem; color:var(--muted); line-height:1.75; }
+.elections-block ul { padding-left:1.25rem; margin-top:0.5rem; }
+.elections-block li { margin-bottom:0.4rem; }
+
+@media(max-width:900px){ .officers-grid { grid-template-columns:1fr 1fr; } }
+@media(max-width:580px){ .officers-grid { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="logo.png" class="nav-logo-icon" alt="CCO Logo" style="width:44px;height:44px;border-radius:50%;object-fit:cover;background:#1b2d5b;">
+      <div class="nav-logo-text">Milpitas CCO <span>Christ Community Outreach</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="officers.html" class="active">Officers</a></li>
+      <li><a href="forms.html">Forms</a></li>
+      <li><a href="join.html" class="nav-cta">Join Us</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="document.getElementById('mobileMenu').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a><a href="about.html">About</a>
+  <a href="events.html">Events</a><a href="officers.html">Officers</a>
+  <a href="forms.html">Forms</a><a href="join.html">Join Us</a>
+</div>
+
+<div class="page-body">
+
+  <div class="page-hero">
+    <h1>2026–27 Officers</h1>
+    <p>Your fellow MHS students running the club.</p>
+  </div>
+
+  <div class="section-cream">
+    <div class="container">
+
+      <div class="reveal">
+        <div class="section-label">Leadership</div>
+        <h2 class="section-title">Meet the Team</h2>
+
+      </div>
+
+      <div class="officers-grid">
+
+        <div class="officer-card reveal reveal-delay-1">
+          <div class="officer-card-top">
+            <div class="officer-avatar">👤</div>
+            <div class="officer-role-badge">President</div>
+          </div>
+          <div class="officer-card-bottom">
+            <div class="officer-name">Joash Thomas</div>
+          </div>
+        </div>
+
+        <div class="officer-card reveal reveal-delay-2">
+          <div class="officer-card-top">
+            <div class="officer-avatar">👤</div>
+            <div class="officer-role-badge">Vice President</div>
+          </div>
+          <div class="officer-card-bottom">
+            <div class="officer-name">Minh-Khoa Nguyen</div>
+          </div>
+        </div>
+
+        <div class="officer-card reveal reveal-delay-3">
+          <div class="officer-card-top">
+            <div class="officer-avatar">👤</div>
+            <div class="officer-role-badge">Secretary</div>
+          </div>
+          <div class="officer-card-bottom">
+            <div class="officer-name">Aryan Mohan</div>
+          </div>
+        </div>
+
+        <div class="officer-card reveal reveal-delay-2">
+          <div class="officer-card-top">
+            <div class="officer-avatar">👤</div>
+            <div class="officer-role-badge">Event Coordinator</div>
+          </div>
+          <div class="officer-card-bottom">
+            <div class="officer-name">Peter Robbins</div>
+          </div>
+        </div>
+
+        <div class="officer-card reveal reveal-delay-3">
+          <div class="officer-card-top">
+            <div class="officer-avatar">👤</div>
+            <div class="officer-role-badge">Community Manager</div>
+          </div>
+          <div class="officer-card-bottom">
+            <div class="officer-name">Abhinav Elimineti</div>
+          </div>
+        </div>
+
+        <div class="officer-card reveal reveal-delay-4">
+          <div class="officer-card-top">
+            <div class="officer-avatar">👤</div>
+            <div class="officer-role-badge">CLOG Representative</div>
+          </div>
+          <div class="officer-card-bottom">
+            <div class="officer-name">Peter Robbins</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ADVISOR -->
+      <div class="advisor-card reveal">
+        <div class="advisor-icon-wrap">🏫</div>
+        <div class="advisor-info">
+          <div class="advisor-tag">Faculty Advisor</div>
+          <div class="advisor-name">Kent Mitchell</div>
+          <p>Supervises all club events, hosts meetings, and is responsible for the conduct of the club's members. Our faculty anchor at Milpitas High School.</p>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-name">Milpitas Christ Community Outreach Club</div>
+        <p>Milpitas High School · 2026–27</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a><a href="about.html">About</a>
+        <a href="events.html">Events</a><a href="officers.html">Officers</a><a href="join.html">Join Us</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Milpitas Christ Community Outreach Club</span>
+      <span>In partnership with C3 Milpitas</span>
+    </div>
+  </footer>
+</div>
+
+<script>
+const io = new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('up');io.unobserve(x.target);}}),{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

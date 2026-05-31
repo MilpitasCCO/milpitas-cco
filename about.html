@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>About — Milpitas CCO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="nav.css"/>
+<style>
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+.three-col { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
+
+/* pillars */
+.pillar-card {
+  background: var(--white); border-radius: 16px; padding: 2rem;
+  border: 1px solid var(--cream2);
+  transition: box-shadow 0.25s, transform 0.25s;
+}
+.pillar-card:hover { box-shadow: 0 16px 40px rgba(27,45,91,0.1); transform: translateY(-4px); }
+.pillar-icon { font-size: 2rem; margin-bottom: 1rem; }
+.pillar-title { font-family:'Fraunces',serif; font-size:1.15rem; font-weight:800; color:var(--navy); margin-bottom:0.5rem; }
+.pillar-desc { font-size:0.84rem; color:var(--muted); line-height:1.7; }
+
+/* membership table */
+.mem-table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; }
+.mem-table tr { border-bottom: 1px solid var(--cream2); }
+.mem-table tr:first-child { border-top: 1px solid var(--cream2); }
+.mem-table td { padding: 0.9rem 0.5rem; font-size: 0.88rem; vertical-align: top; }
+.mem-table td:first-child { color: var(--muted); font-size: 0.78rem; width: 40%; }
+.mem-table td:last-child { color: var(--navy); font-weight: 500; }
+
+/* note */
+.callout {
+  background: rgba(212,168,67,0.1); border-left: 3px solid var(--gold);
+  border-radius: 0 10px 10px 0; padding: 1.25rem 1.5rem;
+  font-size: 0.88rem; color: var(--text); line-height: 1.7; margin-top: 2rem;
+}
+.callout strong { color: #8a6010; }
+
+/* constitution snippet */
+.article-block {
+  background: var(--cream); border-radius: 12px; padding: 2rem;
+  border: 1px solid var(--cream2); margin-top: 1.5rem;
+}
+.article-block h4 { font-family:'Fraunces',serif; font-size:1rem; font-weight:800; color:var(--navy); margin-bottom:0.75rem; }
+.article-block p, .article-block li { font-size:0.84rem; color:var(--muted); line-height:1.7; }
+.article-block ul { padding-left: 1.25rem; margin-top: 0.5rem; }
+.article-block li { margin-bottom: 0.35rem; }
+
+@media(max-width:900px){ .two-col, .three-col { grid-template-columns:1fr; gap:2rem; } }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="logo.png" class="nav-logo-icon" alt="CCO Logo" style="width:44px;height:44px;border-radius:50%;object-fit:cover;background:#1b2d5b;">
+      <div class="nav-logo-text">Milpitas CCO <span>Christ Community Outreach</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="officers.html">Officers</a></li>
+      <li><a href="forms.html">Forms</a></li>
+      <li><a href="join.html" class="nav-cta">Join Us</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="document.getElementById('mobileMenu').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a><a href="about.html">About</a>
+  <a href="events.html">Events</a><a href="officers.html">Officers</a>
+  <a href="forms.html">Forms</a><a href="join.html">Join Us</a>
+</div>
+
+<div class="page-body">
+
+  <div class="page-hero">
+    <h1>About the Club</h1>
+    <p>Who we are, what we stand for, and how we serve Milpitas.</p>
+  </div>
+
+  <!-- PURPOSE -->
+  <div class="section-cream">
+    <div class="container">
+      <div class="two-col">
+        <div class="reveal">
+          <div class="section-label">Our Purpose</div>
+          <h2 class="section-title">Serving the community. Building leaders.</h2>
+          <p class="section-desc">The primary purpose of our club is to serve the community while providing students with valuable opportunities for community service. We focus on volunteering and leadership development, primarily through programs at Christ Community Church of Milpitas (C3 Milpitas).</p>
+          <p class="section-desc" style="margin-top:1rem;">Activities include participation in sports camps, day camps, youth mentoring, and counseling support for younger students — designed to build leadership skills, foster teamwork, and promote community involvement.</p>
+          <div class="callout"><strong>Open to all students.</strong> This is NOT a strictly Christian club. Membership is open to all MHS students regardless of religion, ethnicity, gender, or sexual orientation.</div>
+        </div>
+        <div class="reveal reveal-delay-2">
+          <div class="section-label">Quick Facts</div>
+          <h2 class="section-title">Club at a Glance</h2>
+          <table class="mem-table">
+            <tr><td>Official Name</td><td>Milpitas Christ Community Outreach Club</td></tr>
+            <tr><td>School</td><td>Milpitas High School</td></tr>
+            <tr><td>Year</td><td>2026–27</td></tr>
+            <tr><td>Meetings</td><td>Every other Thursday, lunch period</td></tr>
+            <tr><td>GPA Requirement</td><td>2.5 or above</td></tr>
+            <tr><td>Membership Fee</td><td>Free</td></tr>
+            <tr><td>Primary Partner</td><td>C3 Milpitas (Christ Community Church)</td></tr>
+            <tr><td>Faculty Advisor</td><td>Kent Mitchell</td></tr>
+            <tr><td>Communication</td><td>Google Chat, Google Classroom, Instagram</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PILLARS -->
+  <div class="section-white">
+    <div class="container">
+      <div class="reveal" style="margin-bottom:3rem">
+        <div class="section-label">What We Believe In</div>
+        <h2 class="section-title">Our Three Pillars</h2>
+      </div>
+      <div class="three-col">
+        <div class="pillar-card reveal reveal-delay-1">
+          <div class="pillar-icon">🤝</div>
+          <div class="pillar-title">Genuine Service</div>
+          <div class="pillar-desc">Real volunteer work with real impact — helping youth, families, and neighbors in Milpitas through meaningful, hands-on programs.</div>
+        </div>
+        <div class="pillar-card reveal reveal-delay-2">
+          <div class="pillar-icon">🌱</div>
+          <div class="pillar-title">Leadership Development</div>
+          <div class="pillar-desc">Build communication, teamwork, and organizational skills by leading events, mentoring younger students, and taking on real responsibilities.</div>
+        </div>
+        <div class="pillar-card reveal reveal-delay-3">
+          <div class="pillar-icon">🏫</div>
+          <div class="pillar-title">Student-Led Community</div>
+          <div class="pillar-desc">Every officer is a fellow MHS student. We believe in giving students ownership — from planning meetings to running events.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MEMBERSHIP -->
+  <div class="section-cream">
+    <div class="container">
+      <div class="two-col">
+        <div class="reveal">
+          <div class="section-label">Membership</div>
+          <h2 class="section-title">What We Expect from Members</h2>
+          <table class="mem-table">
+            <tr><td>Meetings</td><td>Attend at least 1 general meeting per month</td></tr>
+            <tr><td>Attendance Rate</td><td>Maintain at least 50% attendance at all meetings</td></tr>
+            <tr><td>Volunteering</td><td>Volunteer for at least 1 activity monthly (varies by availability)</td></tr>
+            <tr><td>Communication</td><td>Stay updated on all club announcements</td></tr>
+            <tr><td>GPA</td><td>2.5 minimum to join and maintain membership</td></tr>
+            <tr><td>Cost</td><td>Free — no dues ever</td></tr>
+          </table>
+        </div>
+        <div class="reveal reveal-delay-2">
+          <div class="section-label">Officers</div>
+          <h2 class="section-title">Higher Standard for Leaders</h2>
+          <p class="section-desc">Officers are held to a higher bar:</p>
+          <div class="article-block">
+            <ul>
+              <li>Participate in <strong>all mandatory summer programs</strong></li>
+              <li>Attend <strong>ALL club meetings</strong> (excused only with valid reason)</li>
+              <li>Participate in <strong>75% of all club activities</strong></li>
+              <li>Fulfill their specific officer duties consistently</li>
+              <li>Represent the club at CLOG Council and school events</li>
+            </ul>
+          </div>
+          <div class="callout" style="margin-top:1.5rem"><strong>Why join as an officer?</strong> You get real leadership experience running programs that impact the wider Milpitas community — not just a title.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BENEFITS -->
+  <div class="section-white">
+    <div class="container">
+      <div class="reveal" style="margin-bottom:3rem">
+        <div class="section-label">Why Join</div>
+        <h2 class="section-title">What You Actually Get Out of It</h2>
+      </div>
+      <div class="three-col">
+        <div class="pillar-card reveal reveal-delay-1">
+          <div class="pillar-icon">🎓</div>
+          <div class="pillar-title">Service Hours</div>
+          <div class="pillar-desc">Count toward MHS's 20-hour graduation requirement. All volunteer work with our club is recognized community service.</div>
+        </div>
+        <div class="pillar-card reveal reveal-delay-2">
+          <div class="pillar-icon">🏅</div>
+          <div class="pillar-title">Maroon Cord</div>
+          <div class="pillar-desc">Active members with logged service hours can qualify for the Maroon Cord at MHS graduation.</div>
+        </div>
+        <div class="pillar-card reveal reveal-delay-3">
+          <div class="pillar-icon">💪</div>
+          <div class="pillar-title">Real Skills</div>
+          <div class="pillar-desc">Event planning, mentoring, team coordination — the kind of experience colleges and employers actually notice.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-name">Milpitas Christ Community Outreach Club</div>
+        <p>Milpitas High School · 2026–27</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a><a href="about.html">About</a>
+        <a href="events.html">Events</a><a href="officers.html">Officers</a><a href="join.html">Join Us</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Milpitas Christ Community Outreach Club</span>
+      <span>In partnership with C3 Milpitas</span>
+    </div>
+  </footer>
+</div>
+
+<script>
+const io = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){x.target.classList.add('up');io.unobserve(x.target);}}),{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

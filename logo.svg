@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <!-- Gradient ring: purple → orange → gold -->
+    <linearGradient id="ring" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#9333ea"/>
+      <stop offset="40%"  stop-color="#f97316"/>
+      <stop offset="100%" stop-color="#d4a843"/>
+    </linearGradient>
+    <!-- Inner glow -->
+    <radialGradient id="bgGlow" cx="50%" cy="35%" r="55%">
+      <stop offset="0%"   stop-color="#2a3f6e"/>
+      <stop offset="100%" stop-color="#111e3c"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Outer gradient ring -->
+  <circle cx="100" cy="100" r="98" fill="url(#ring)"/>
+  <!-- Black separator ring -->
+  <circle cx="100" cy="100" r="90" fill="#0d0d0d"/>
+  <!-- Gold inner ring -->
+  <circle cx="100" cy="100" r="87" fill="#d4a843"/>
+  <!-- Dark navy fill -->
+  <circle cx="100" cy="100" r="82" fill="url(#bgGlow)"/>
+
+  <!-- ── FLAME (left) ── -->
+  <g transform="translate(46, 58)" fill="#e8dfc0" opacity="0.92">
+    <!-- flame outer -->
+    <path d="M14,38 C2,30 0,18 8,8 C10,18 16,14 14,6 C22,14 26,24 22,34 C20,28 17,26 18,20 C12,26 14,32 14,38Z"/>
+    <!-- torch base -->
+    <rect x="11" y="37" width="6" height="3" rx="1"/>
+    <rect x="9" y="40" width="10" height="2" rx="1"/>
+  </g>
+
+  <!-- ── LEFT HAND (cupping flame) ── -->
+  <g transform="translate(33, 90)" fill="#e8dfc0" opacity="0.88">
+    <path d="M4,14 Q0,10 2,6 Q4,2 8,3 L22,3 Q26,3 27,7 Q28,11 24,13 Q20,15 16,14 L4,14Z"/>
+    <rect x="4" y="13" width="20" height="4" rx="2"/>
+    <!-- fingers suggestion -->
+    <line x1="8" y1="3" x2="7" y2="0" stroke="#e8dfc0" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="13" y1="3" x2="13" y2="0" stroke="#e8dfc0" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="18" y1="3" x2="18" y2="0" stroke="#e8dfc0" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="23" y1="3" x2="23" y2="1" stroke="#e8dfc0" stroke-width="1.5" stroke-linecap="round"/>
+  </g>
+
+  <!-- ── OPEN BOOK (right) ── -->
+  <g transform="translate(118, 58)" fill="#e8dfc0" opacity="0.92">
+    <!-- left page -->
+    <path d="M1,6 Q1,2 6,2 L18,2 L18,34 Q13,32 6,34 Q1,34 1,30 Z"/>
+    <!-- right page -->
+    <path d="M21,2 L33,2 Q38,2 38,6 L38,30 Q38,34 33,34 Q26,32 21,34 Z"/>
+    <!-- spine -->
+    <rect x="18" y="2" width="3" height="32" fill="#1b2d5b"/>
+    <!-- page lines left -->
+    <line x1="5" y1="10" x2="16" y2="10" stroke="#1b2d5b" stroke-width="1" opacity="0.4"/>
+    <line x1="5" y1="15" x2="16" y2="15" stroke="#1b2d5b" stroke-width="1" opacity="0.4"/>
+    <line x1="5" y1="20" x2="16" y2="20" stroke="#1b2d5b" stroke-width="1" opacity="0.4"/>
+    <!-- page lines right -->
+    <line x1="23" y1="10" x2="34" y2="10" stroke="#1b2d5b" stroke-width="1" opacity="0.4"/>
+    <line x1="23" y1="15" x2="34" y2="15" stroke="#1b2d5b" stroke-width="1" opacity="0.4"/>
+    <line x1="23" y1="20" x2="34" y2="20" stroke="#1b2d5b" stroke-width="1" opacity="0.4"/>
+  </g>
+
+  <!-- ── RIGHT HAND (cupping book) ── -->
+  <g transform="translate(120, 90)" fill="#e8dfc0" opacity="0.88">
+    <path d="M4,14 Q0,10 2,6 Q4,2 8,3 L22,3 Q26,3 27,7 Q28,11 24,13 Q20,15 16,14 L4,14Z"/>
+    <rect x="4" y="13" width="20" height="4" rx="2"/>
+    <line x1="8" y1="3" x2="7" y2="0" stroke="#e8dfc0" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="13" y1="3" x2="13" y2="0" stroke="#e8dfc0" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="18" y1="3" x2="18" y2="0" stroke="#e8dfc0" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="23" y1="3" x2="23" y2="1" stroke="#e8dfc0" stroke-width="1.5" stroke-linecap="round"/>
+  </g>
+
+  <!-- ── CCO BADGE (center) ── -->
+  <!-- badge background -->
+  <rect x="82" y="52" width="36" height="68" rx="6" fill="#1b2d5b" stroke="#e8dfc0" stroke-width="1.5"/>
+  <!-- C -->
+  <text x="100" y="80" text-anchor="middle" font-family="Arial, sans-serif" font-weight="800" font-size="18" fill="#e8dfc0">C</text>
+  <!-- C -->
+  <text x="100" y="99" text-anchor="middle" font-family="Arial, sans-serif" font-weight="800" font-size="18" fill="#e8dfc0">C</text>
+  <!-- O -->
+  <text x="100" y="118" text-anchor="middle" font-family="Arial, sans-serif" font-weight="800" font-size="18" fill="#e8dfc0">O</text>
+
+  <!-- ── MHS TEXT ── -->
+  <text x="100" y="158" text-anchor="middle" font-family="Arial, sans-serif" font-weight="800" font-size="14" fill="#e8dfc0" letter-spacing="2">MHS</text>
+</svg>

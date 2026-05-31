@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Forms — Milpitas CCO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="nav.css"/>
+<style>
+.forms-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.form-card {
+  background: var(--white);
+  border: 1px solid var(--cream2);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: box-shadow 0.25s, transform 0.25s;
+}
+.form-card:hover {
+  box-shadow: 0 20px 50px rgba(27,45,91,0.12);
+  transform: translateY(-4px);
+}
+
+.form-card-top {
+  background: linear-gradient(135deg, var(--navy) 0%, #2a4a8a 100%);
+  padding: 2.5rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.form-card-top::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(212,168,67,0.15) 0%, transparent 65%);
+}
+.form-card-number {
+  position: absolute; top: 1.25rem; right: 1.5rem;
+  font-family: 'Fraunces', serif;
+  font-size: 4rem; font-weight: 900;
+  color: rgba(255,255,255,0.06);
+  line-height: 1;
+}
+.form-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+.form-card-label {
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.5rem;
+  position: relative;
+}
+.form-card-title {
+  font-family: 'Fraunces', serif;
+  font-size: 1.5rem; font-weight: 900;
+  color: #fff; line-height: 1.1;
+  position: relative;
+}
+
+.form-card-body { padding: 2rem; }
+.form-card-desc {
+  font-size: 0.88rem; color: var(--muted);
+  line-height: 1.75; margin-bottom: 1.75rem;
+}
+.form-details {
+  display: flex; flex-direction: column; gap: 0;
+  margin-bottom: 1.75rem;
+}
+.form-detail-row {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 0.7rem 0; border-bottom: 1px solid var(--cream2);
+  font-size: 0.82rem;
+}
+.form-detail-row:first-child { border-top: 1px solid var(--cream2); }
+.form-detail-label { color: var(--muted); font-size: 0.75rem; }
+.form-detail-val { color: var(--navy); font-weight: 600; }
+
+.btn-form-link {
+  display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+  background: var(--navy); color: #fff;
+  font-weight: 700; font-size: 0.88rem; letter-spacing: 0.02em;
+  padding: 0.9rem 1.5rem; border-radius: 10px;
+  text-decoration: none; transition: background 0.2s, transform 0.2s;
+  width: 100%;
+}
+.btn-form-link:hover { background: var(--navy-d); transform: translateY(-1px); }
+.btn-form-link.gold {
+  background: var(--gold); color: var(--navy);
+}
+.btn-form-link.gold:hover { background: var(--gold-lt); }
+
+.btn-arrow { font-size: 1rem; }
+
+/* info banner */
+.info-banner {
+  background: var(--cream);
+  border: 1px solid var(--cream2);
+  border-radius: 14px;
+  padding: 1.5rem 2rem;
+  display: flex; align-items: flex-start; gap: 1rem;
+  margin-bottom: 3rem;
+  font-size: 0.87rem; color: var(--muted); line-height: 1.7;
+}
+.info-banner-icon { font-size: 1.4rem; flex-shrink: 0; }
+.info-banner strong { color: var(--navy); }
+
+@media (max-width: 700px) {
+  .forms-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="logo.png" class="nav-logo-icon" alt="CCO Logo" style="width:44px;height:44px;border-radius:50%;object-fit:cover;background:#1b2d5b;">
+      <div class="nav-logo-text">Milpitas CCO <span>Christ Community Outreach</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="officers.html">Officers</a></li>
+      <li><a href="forms.html" class="active">Forms</a></li>
+      <li><a href="join.html" class="nav-cta">Join Us</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="document.getElementById('mobileMenu').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="events.html">Events</a>
+  <a href="officers.html">Officers</a>
+  <a href="forms.html">Forms</a>
+  <a href="join.html">Join Us</a>
+</div>
+
+<div class="page-body">
+
+  <div class="page-hero">
+    <h1>Forms</h1>
+    <p>All official forms for Milpitas Christ Community Outreach Club in one place.</p>
+  </div>
+
+  <div class="section-cream">
+    <div class="container">
+
+      <div class="info-banner reveal">
+        <div class="info-banner-icon">📋</div>
+        <div>
+          <strong>How forms work:</strong> All forms are hosted on Google Forms. You'll need a Google account to submit. If you have trouble accessing a form, reach out to any officer listed on the <a href="officers.html" style="color:var(--navy);font-weight:600">Officers page</a>.
+        </div>
+      </div>
+
+      <div class="forms-grid">
+
+        <!-- FORM 1: Member Interest -->
+        <div class="form-card reveal reveal-delay-1">
+          <div class="form-card-top">
+            <div class="form-card-number">01</div>
+            <div class="form-icon">📝</div>
+            <div class="form-card-label">Membership</div>
+            <div class="form-card-title">Member Interest Form</div>
+          </div>
+          <div class="form-card-body">
+            <p class="form-card-desc">
+              New to the club? Fill this out to get added to our roster. We'll add you to Google Classroom and send you meeting details before the school year starts.
+            </p>
+            <div class="form-details">
+              <div class="form-detail-row">
+                <span class="form-detail-label">Who it's for</span>
+                <span class="form-detail-val">New members</span>
+              </div>
+              <div class="form-detail-row">
+                <span class="form-detail-label">Time to complete</span>
+                <span class="form-detail-val">Under 2 minutes</span>
+              </div>
+              <div class="form-detail-row">
+                <span class="form-detail-label">Required</span>
+                <span class="form-detail-val">To join the club</span>
+              </div>
+            </div>
+            <a href="https://forms.gle/GYV1B9uts7ayfusT8" target="_blank" rel="noopener" class="btn-form-link gold">
+              Open Form <span class="btn-arrow">→</span>
+            </a>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-name">Milpitas Christ Community Outreach Club</div>
+        <p>Milpitas High School · 2026–27</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="events.html">Events</a>
+        <a href="officers.html">Officers</a>
+        <a href="forms.html">Forms</a>
+        <a href="join.html">Join Us</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Milpitas Christ Community Outreach Club</span>
+      <span>In partnership with C3 Milpitas</span>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+const io = new IntersectionObserver(e => e.forEach(x => {
+  if (x.isIntersecting) { x.target.classList.add('up'); io.unobserve(x.target); }
+}), { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

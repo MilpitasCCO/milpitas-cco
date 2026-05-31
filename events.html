@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Events — Milpitas CCO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="nav.css"/>
+<style>
+/* filter tabs */
+.filter-row {
+  display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 3rem;
+}
+.filter-btn {
+  background: var(--white); border: 1px solid var(--cream2);
+  color: var(--muted); font-size: 0.82rem; font-weight: 500;
+  padding: 0.5rem 1.1rem; border-radius: 999px;
+  cursor: pointer; transition: all 0.2s; font-family: 'Inter',sans-serif;
+}
+.filter-btn.active, .filter-btn:hover {
+  background: var(--navy); color: #fff; border-color: var(--navy);
+}
+
+/* event cards big */
+.events-list { display: flex; flex-direction: column; gap: 1.5rem; }
+.event-big {
+  background: var(--white); border: 1px solid var(--cream2); border-radius: 16px;
+  display: grid; grid-template-columns: 180px 1fr; overflow: hidden;
+  transition: box-shadow 0.25s, transform 0.25s;
+}
+.event-big:hover { box-shadow: 0 16px 40px rgba(27,45,91,0.1); transform: translateY(-3px); }
+.event-big-icon {
+  display: flex; align-items: center; justify-content: center;
+  font-size: 3.5rem; min-height: 160px;
+}
+.event-big-body { padding: 2rem; }
+.event-meta-row { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
+.event-tag {
+  display: inline-block;
+  background: rgba(212,168,67,0.15); color: #8a6010;
+  font-size: 0.67rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.25rem 0.7rem; border-radius: 999px;
+}
+.event-status {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-size: 0.67rem; font-weight: 600; color: var(--muted);
+  letter-spacing: 0.06em; text-transform: uppercase;
+}
+.status-dot { width: 6px; height: 6px; border-radius: 50%; background: #3a3; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1}50%{opacity:.35} }
+.event-big-title { font-family:'Fraunces',serif; font-size:1.4rem; font-weight:800; color:var(--navy); margin-bottom:0.6rem; }
+.event-big-desc { font-size:0.88rem; color:var(--muted); line-height:1.75; max-width:600px; }
+.event-big-footer { margin-top:1.25rem; display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap; }
+.event-detail { font-size:0.78rem; color:var(--muted); display:flex; align-items:center; gap:0.4rem; }
+.event-detail strong { color:var(--navy); }
+
+/* summer banner */
+.summer-banner {
+  background: linear-gradient(135deg, var(--navy) 0%, #2a4a8a 100%);
+  border-radius: 16px; padding: 2.5rem; color: #fff; margin-bottom: 3rem;
+  display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;
+}
+.summer-banner-icon { font-size: 3rem; flex-shrink: 0; }
+.summer-banner h3 { font-family:'Fraunces',serif; font-size:1.5rem; font-weight:800; color:var(--gold); margin-bottom:0.4rem; }
+.summer-banner p { font-size:0.88rem; color:rgba(255,255,255,0.65); line-height:1.7; max-width:500px; }
+
+@media(max-width:700px){
+  .event-big { grid-template-columns: 1fr; }
+  .event-big-icon { min-height: 100px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="logo.png" class="nav-logo-icon" alt="CCO Logo" style="width:44px;height:44px;border-radius:50%;object-fit:cover;background:#1b2d5b;">
+      <div class="nav-logo-text">Milpitas CCO <span>Christ Community Outreach</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="events.html" class="active">Events</a></li>
+      <li><a href="officers.html">Officers</a></li>
+      <li><a href="forms.html">Forms</a></li>
+      <li><a href="join.html" class="nav-cta">Join Us</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="document.getElementById('mobileMenu').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a><a href="about.html">About</a>
+  <a href="events.html">Events</a><a href="officers.html">Officers</a>
+  <a href="forms.html">Forms</a><a href="join.html">Join Us</a>
+</div>
+
+<div class="page-body">
+
+  <div class="page-hero">
+    <h1>Events &amp; Programs</h1>
+    <p>Everything we're planning for Summer 2026 and the 2026–27 school year.</p>
+  </div>
+
+  <div class="section-cream">
+    <div class="container">
+
+      <div class="summer-banner reveal">
+        <div class="summer-banner-icon">☀️</div>
+        <div>
+          <h3>Summer 2026 Lineup</h3>
+          <p>Our main events happen over the summer at C3 Milpitas. Officers are required to participate in all summer programs — members are strongly encouraged to sign up for at least one.</p>
+        </div>
+      </div>
+
+      <div class="events-list">
+
+        <div class="event-big reveal">
+          <div class="event-big-icon" style="background:#dbeafe">🏀</div>
+          <div class="event-big-body">
+            <div class="event-meta-row">
+              <span class="event-tag">Summer · Sports</span>
+              <span class="event-status"><span class="status-dot"></span>Planning in Progress</span>
+            </div>
+            <div class="event-big-title">Sports Camp</div>
+            <div class="event-big-desc">A high-energy week of sports, teamwork, and faith-building fun! No matter your skill level, there's a place for you.</div>
+            <div class="event-big-footer">
+              <div class="event-detail">📅 <strong>June 22–26</strong> · 9:00 AM – 12:15 PM</div>
+              <div class="event-detail">📍 <strong>Where:</strong> C3 Milpitas Campus</div>
+              <div class="event-detail">👥 <strong>Ages:</strong> 4 years old – 6th grade grads</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-big reveal">
+          <div class="event-big-icon" style="background:#ede9fe">📖</div>
+          <div class="event-big-body">
+            <div class="event-meta-row">
+              <span class="event-tag">Summer · VBS</span>
+              <span class="event-status"><span class="status-dot"></span>Planning in Progress</span>
+            </div>
+            <div class="event-big-title">VBS Camp</div>
+            <div class="event-big-desc">A week of Bible stories, music, games, crafts, and unforgettable moments as we grow in God's love!</div>
+            <div class="event-big-footer">
+              <div class="event-detail">📅 <strong>June 15–19</strong> · 9:00 AM – 12:00 PM</div>
+              <div class="event-detail">📍 <strong>Where:</strong> C3 Milpitas Campus</div>
+              <div class="event-detail">👥 <strong>Ages:</strong> 4 years old – 3rd grade grads</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-big reveal">
+          <div class="event-big-icon" style="background:#d1fae5">🌞</div>
+          <div class="event-big-body">
+            <div class="event-meta-row">
+              <span class="event-tag">Summer · Camp</span>
+              <span class="event-status"><span class="status-dot"></span>Planning in Progress</span>
+            </div>
+            <div class="event-big-title">Day Camp</div>
+            <div class="event-big-desc">A full-day adventure with lessons, field trips, and service opportunities — building faith, friendships, and leadership!</div>
+            <div class="event-big-footer">
+              <div class="event-detail">📅 <strong>July 6–10</strong> · 9:00 AM – 4:00 PM</div>
+              <div class="event-detail">📍 <strong>Where:</strong> C3 Milpitas Campus</div>
+              <div class="event-detail">👥 <strong>Ages:</strong> 3rd – 6th grade grads</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-big reveal">
+          <div class="event-big-icon" style="background:#fef9c3">🛒</div>
+          <div class="event-big-body">
+            <div class="event-meta-row">
+              <span class="event-tag">School Year · Drive</span>
+              <span class="event-status"><span class="status-dot"></span>Planned</span>
+            </div>
+            <div class="event-big-title">Food Drives</div>
+            <div class="event-big-desc">Organized food collection and distribution drives to support families in need. Coordinated in partnership with C3 Milpitas and other local initiatives throughout the school year. Sign-ups will be posted in Google Classroom.</div>
+            <div class="event-big-footer">
+              <div class="event-detail">📅 <strong>When:</strong> 2026–27 School Year</div>
+              <div class="event-detail">📍 <strong>Where:</strong> Various Milpitas locations</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="section-white" style="text-align:center">
+    <div class="container reveal">
+      <div class="section-label">Get Involved</div>
+      <h2 class="section-title" style="margin:0 auto 1rem">Want to sign up for events?</h2>
+      <p class="section-desc" style="margin:0 auto 2rem">Join the club first — once you're in, you'll get access to all event sign-up forms through Google Classroom and Google Chat.</p>
+      <a href="join.html" class="btn-gold" style="display:inline-block;background:var(--navy);color:#fff;padding:0.9rem 2.2rem;border-radius:999px;text-decoration:none;font-weight:700;font-size:0.9rem">Join the Club →</a>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-name">Milpitas Christ Community Outreach Club</div>
+        <p>Milpitas High School · 2026–27</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a><a href="about.html">About</a>
+        <a href="events.html">Events</a><a href="officers.html">Officers</a><a href="join.html">Join Us</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Milpitas Christ Community Outreach Club</span>
+      <span>In partnership with C3 Milpitas</span>
+    </div>
+  </footer>
+</div>
+
+<script>
+const io = new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('up');io.unobserve(x.target);}}),{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

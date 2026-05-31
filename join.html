@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Join Us — Milpitas CCO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="nav.css"/>
+<style>
+.join-layout {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+}
+
+/* big CTA card */
+.join-cta-card {
+  background: linear-gradient(135deg, var(--navy) 0%, #2a4a8a 100%);
+  border-radius: 20px; padding: 3rem;
+  position: sticky; top: 90px;
+}
+.join-cta-card h3 {
+  font-family: 'Fraunces', serif; font-size: 1.8rem;
+  font-weight: 900; color: var(--gold);
+  margin-bottom: 0.5rem; line-height: 1.1;
+}
+.join-cta-card p { font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.7; margin-bottom: 2rem; }
+.btn-join-big {
+  display: block; background: var(--gold); color: var(--navy);
+  font-weight: 800; font-size: 1rem; letter-spacing: 0.02em;
+  padding: 1.1rem 1.5rem; border-radius: 10px;
+  text-decoration: none; text-align: center;
+  transition: background 0.2s, transform 0.2s;
+}
+.btn-join-big:hover { background: var(--gold-lt); transform: translateY(-2px); }
+.join-req-list { margin-top: 2rem; display: flex; flex-direction: column; gap: 0; }
+.join-req-item {
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 0.85rem 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+  font-size: 0.84rem; color: rgba(255,255,255,0.65);
+}
+.join-req-item:first-child { border-top: 1px solid rgba(255,255,255,0.08); }
+.join-req-check { color: var(--gold); font-size: 0.9rem; flex-shrink: 0; }
+
+/* steps */
+.steps { display: flex; flex-direction: column; gap: 2rem; margin-top: 2rem; }
+.step {
+  display: flex; gap: 1.5rem; align-items: flex-start;
+}
+.step-num {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--navy); color: #fff;
+  font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 0.1rem;
+}
+.step-body h4 { font-family:'Fraunces',serif; font-size:1.05rem; font-weight:800; color:var(--navy); margin-bottom:0.35rem; }
+.step-body p { font-size:0.84rem; color:var(--muted); line-height:1.7; }
+
+/* FAQ */
+.faq-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+.faq-item {
+  background: var(--white); border: 1px solid var(--cream2);
+  border-radius: 12px; overflow: hidden;
+}
+.faq-q {
+  padding: 1.1rem 1.25rem; font-size: 0.9rem; font-weight: 600;
+  color: var(--navy); cursor: pointer; display: flex;
+  justify-content: space-between; align-items: center; gap: 1rem;
+  user-select: none;
+}
+.faq-q::after { content: '+'; font-size: 1.2rem; color: var(--gold); flex-shrink: 0; transition: transform 0.2s; }
+.faq-item.open .faq-q::after { transform: rotate(45deg); }
+.faq-a {
+  padding: 0 1.25rem; max-height: 0; overflow: hidden;
+  font-size: 0.84rem; color: var(--muted); line-height: 1.75;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+}
+.faq-item.open .faq-a { max-height: 300px; padding: 0 1.25rem 1.25rem; }
+
+@media(max-width:900px){
+  .join-layout { grid-template-columns:1fr; }
+  .join-cta-card { position: static; }
+}
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="logo.png" class="nav-logo-icon" alt="CCO Logo" style="width:44px;height:44px;border-radius:50%;object-fit:cover;background:#1b2d5b;">
+      <div class="nav-logo-text">Milpitas CCO <span>Christ Community Outreach</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="officers.html">Officers</a></li>
+      <li><a href="forms.html">Forms</a></li>
+      <li><a href="join.html" class="nav-cta active">Join Us</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="document.getElementById('mobileMenu').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a><a href="about.html">About</a>
+  <a href="events.html">Events</a><a href="officers.html">Officers</a>
+  <a href="forms.html">Forms</a><a href="join.html">Join Us</a>
+</div>
+
+<div class="page-body">
+
+  <div class="page-hero">
+    <h1>Join the Club</h1>
+    <p>Fill out the interest form. Takes under 2 minutes.</p>
+  </div>
+
+  <div class="section-cream">
+    <div class="container">
+      <div class="join-layout">
+
+        <!-- LEFT: steps + FAQ -->
+        <div>
+          <div class="reveal">
+            <div class="section-label">How to Join</div>
+            <h2 class="section-title">Three steps to get started.</h2>
+            <div class="steps">
+              <div class="step">
+                <div class="step-num">1</div>
+                <div class="step-body">
+                  <h4>Fill Out the Interest Form</h4>
+                  <p>Click the button on the right and complete our short Google Form — name, grade, and contact info. Under 2 minutes.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-num">2</div>
+                <div class="step-body">
+                  <h4>Get Added to Google Classroom</h4>
+                  <p>Once we have your form, we'll add you to the club's Google Classroom where you'll find all announcements, sign-ups, and meeting details.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-num">3</div>
+                <div class="step-body">
+                  <h4>Show Up and Serve</h4>
+                  <p>Come to the first meeting, get to know the team, and start signing up for volunteer events. That's it — you're in.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal" style="margin-top:4rem">
+            <div class="section-label">FAQ</div>
+            <h2 class="section-title">Common Questions</h2>
+            <div class="faq-list">
+              <div class="faq-item">
+                <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do I have to be Christian to join?</div>
+                <div class="faq-a">No — this is not a strictly Christian club. Membership is open to all MHS students regardless of religion, ethnicity, gender, or any other background. The only requirements are a 2.5 GPA and being a current MHS student.</div>
+              </div>
+              <div class="faq-item">
+                <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is there a membership fee?</div>
+                <div class="faq-a">No. Membership is completely free. There are no dues, no fees, and no costs associated with joining or participating in events.</div>
+              </div>
+              <div class="faq-item">
+                <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">When do you meet?</div>
+                <div class="faq-a">We meet every other Thursday during the lunch period at Milpitas High School. Specific room details will be shared through Google Classroom once you join.</div>
+              </div>
+              <div class="faq-item">
+                <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do volunteer hours count toward graduation?</div>
+                <div class="faq-a">Yes. Volunteer work with our club counts toward MHS's 20-hour community service graduation requirement. Active members can also qualify for the Maroon Cord through logged service hours.</div>
+              </div>
+              <div class="faq-item">
+                <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do I become an officer?</div>
+                <div class="faq-a">You need to be an active member for at least one semester and have volunteered for multiple events. Officer applications open in early September. The President and VP review applications and select candidates. Some roles are semester-long, others are year-long.</div>
+              </div>
+              <div class="faq-item">
+                <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What if I can't make every meeting?</div>
+                <div class="faq-a">That's okay — members just need to maintain a 50% attendance rate and participate in at least one volunteer activity per month. If you have a conflict, just let the officers know.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: sticky CTA card -->
+        <div class="reveal reveal-delay-2">
+          <div class="join-cta-card">
+            <h3>Interest Form</h3>
+            <p>No commitment required. We'll reach out with meeting times and event sign-ups once the school year starts.</p>
+            <a href="https://forms.gle/GYV1B9uts7ayfusT8" target="_blank" rel="noopener" class="btn-join-big">
+              Sign Up → forms.gle
+            </a>
+            <ul class="join-req-list">
+              <li class="join-req-item"><span class="join-req-check">✓</span>Current Milpitas High School student</li>
+              <li class="join-req-item"><span class="join-req-check">✓</span>Minimum 2.5 GPA</li>
+              <li class="join-req-item"><span class="join-req-check">✓</span>Completely free to join</li>
+              <li class="join-req-item"><span class="join-req-check">✓</span>All backgrounds welcome</li>
+              <li class="join-req-item"><span class="join-req-check">✓</span>No experience needed</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTTOM BANNER -->
+  <div class="section-white" style="background:var(--navy);padding:4rem 2rem;text-align:center">
+    <div class="container reveal">
+      <h2 style="font-family:'Fraunces',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:900;color:var(--gold);margin-bottom:1rem">Ready to make a difference?</h2>
+      <p style="color:rgba(255,255,255,0.65);font-size:1rem;max-width:480px;margin:0 auto 2rem;line-height:1.75">Join Milpitas CCO and spend your summer doing something that actually matters for real people in your community.</p>
+      <a href="https://forms.gle/GYV1B9uts7ayfusT8" target="_blank" rel="noopener" style="display:inline-block;background:var(--gold);color:var(--navy);font-weight:800;font-size:1rem;padding:1rem 2.5rem;border-radius:999px;text-decoration:none">Sign Up Now</a>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-name">Milpitas Christ Community Outreach Club</div>
+        <p>Milpitas High School · 2026–27</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a><a href="about.html">About</a>
+        <a href="events.html">Events</a><a href="officers.html">Officers</a><a href="join.html">Join Us</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Milpitas Christ Community Outreach Club</span>
+      <span>In partnership with C3 Milpitas</span>
+    </div>
+  </footer>
+</div>
+
+<script>
+const io = new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('up');io.unobserve(x.target);}}),{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
