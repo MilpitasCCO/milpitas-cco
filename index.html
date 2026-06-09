@@ -8,6 +8,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="nav.css"/>
 <style>
+/* ── HERO CANVAS ── */
+.hero-canvas {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  pointer-events: none; z-index: 0;
+}
+
 /* ── HOME HERO ── */
 .home-hero {
   position: relative; min-height: 100vh;
@@ -233,6 +240,7 @@
 <body>
 
 <!-- NAV -->
+<div class="scroll-progress" id="sp"></div>
 <nav class="site-nav">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">
@@ -265,6 +273,7 @@
 
   <!-- HERO -->
   <div class="home-hero">
+    <canvas class="hero-canvas" id="heroCanvas"></canvas>
     <div class="hero-gradient-overlay"></div>
     <div class="hero-grid"></div>
     <!-- Big tilted logo in background -->
@@ -316,6 +325,32 @@
         <div class="fact-row"><span class="fact-label">Membership Fee</span><span class="fact-val">Free</span></div>
         <div class="fact-row"><span class="fact-label">GPA Requirement</span><span class="fact-val">2.5+</span></div>
         <div class="fact-row"><span class="fact-label">Partner</span><span class="fact-val">C3 Milpitas</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCROLLYTELLING STATS -->
+  <div class="scrolly-section" id="scrollySection">
+    <div class="scrolly-sticky" id="scrollySticky">
+      <div class="scrolly-panel active" id="panel0">
+        <div class="scrolly-num">4</div>
+        <div class="scrolly-label">Summer Events Planned</div>
+        <div class="scrolly-sublabel">Sports Camp · VBS · Day Camp · Food Drives</div>
+      </div>
+      <div class="scrolly-panel" id="panel1">
+        <div class="scrolly-num">20</div>
+        <div class="scrolly-label">Service Hours for Graduation</div>
+        <div class="scrolly-sublabel">All volunteer work counts toward MHS requirement</div>
+      </div>
+      <div class="scrolly-panel" id="panel2">
+        <div class="scrolly-num">$0</div>
+        <div class="scrolly-label">Cost to Join</div>
+        <div class="scrolly-sublabel">Free to join · No dues · No fees · Ever</div>
+      </div>
+      <div class="scrolly-progress">
+        <div class="scrolly-dot active" id="dot0"></div>
+        <div class="scrolly-dot" id="dot1"></div>
+        <div class="scrolly-dot" id="dot2"></div>
       </div>
     </div>
   </div>
@@ -435,10 +470,126 @@
 </div><!-- /page-body -->
 
 <script>
+/* ── SCROLL REVEAL ── */
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('up'); io.unobserve(e.target); } });
-}, { threshold: 0.1 });
+}, { threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* ── NAV GLASS ON SCROLL ── */
+const nav = document.querySelector('.site-nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+
+/* ── CANVAS PARTICLE HERO ── */
+(function() {
+  const canvas = document.getElementById('heroCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [], mouse = { x: -999, y: -999 };
+
+  function resize() {
+    W = canvas.width = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const COLORS = ['rgba(212,168,67,', 'rgba(255,255,255,', 'rgba(100,140,220,'];
+  function Particle() {
+    this.reset = function() {
+      this.x = Math.random() * W;
+      this.y = Math.random() * H;
+      this.r = Math.random() * 1.8 + 0.3;
+      this.vx = (Math.random() - 0.5) * 0.4;
+      this.vy = (Math.random() - 0.5) * 0.4 - 0.15;
+      this.alpha = Math.random() * 0.5 + 0.1;
+      this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
+    };
+    this.reset();
+  }
+
+  for (let i = 0; i < 110; i++) { const p = new Particle(); particles.push(p); }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(p => {
+      // subtle mouse repel
+      const dx = p.x - mouse.x, dy = p.y - mouse.y;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      if (dist < 120) {
+        p.vx += dx / dist * 0.06;
+        p.vy += dy / dist * 0.06;
+      }
+      p.vx *= 0.98; p.vy *= 0.98;
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < -10 || p.x > W+10 || p.y < -10 || p.y > H+10) p.reset();
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+      ctx.fillStyle = p.color + p.alpha + ')';
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+
+  const hero = document.querySelector('.home-hero');
+  if (hero) {
+    hero.addEventListener('mousemove', e => {
+      const rect = hero.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+    });
+    hero.addEventListener('mouseleave', () => { mouse.x = -999; mouse.y = -999; });
+  }
+})();
+
+/* ── MOUSE PARALLAX ON HERO CONTENT ── */
+(function() {
+  const hero = document.querySelector('.home-hero');
+  const logo = document.querySelector('.hero-bg-logo');
+  const h1 = document.querySelector('.home-hero h1');
+  const eyebrow = document.querySelector('.hero-eyebrow');
+  if (!hero) return;
+
+  hero.addEventListener('mousemove', e => {
+    const rect = hero.getBoundingClientRect();
+    const cx = rect.width / 2, cy = rect.height / 2;
+    const dx = (e.clientX - rect.left - cx) / cx;
+    const dy = (e.clientY - rect.top - cy) / cy;
+
+    if (logo) logo.style.transform = `translateY(-50%) rotate(18deg) translate(${dx*18}px, ${dy*18}px)`;
+    if (h1) h1.style.transform = `translate(${dx * -6}px, ${dy * -6}px)`;
+    if (eyebrow) eyebrow.style.transform = `translate(${dx * -10}px, ${dy * -10}px)`;
+  });
+  hero.addEventListener('mouseleave', () => {
+    if (logo) logo.style.transform = '';
+    if (h1) h1.style.transform = '';
+    if (eyebrow) eyebrow.style.transform = '';
+  });
+})();
+
+/* ── SCROLLYTELLING ── */
+(function() {
+  const section = document.getElementById('scrollySection');
+  if (!section) return;
+  const panels = document.querySelectorAll('.scrolly-panel');
+  const dots = document.querySelectorAll('.scrolly-dot');
+  const total = panels.length;
+
+  function update() {
+    const rect = section.getBoundingClientRect();
+    const progress = Math.max(0, Math.min(1, -rect.top / (rect.height - window.innerHeight)));
+    const idx = Math.min(total - 1, Math.floor(progress * total));
+
+    panels.forEach((p, i) => p.classList.toggle('active', i === idx));
+    dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
 </script>
 <script async src="https://www.instagram.com/embed.js" onload="if(window.instgrm) window.instgrm.Embeds.process();"></script>
 </body>

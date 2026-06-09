@@ -96,6 +96,7 @@
 </head>
 <body>
 
+<div class="scroll-progress" id="sp"></div>
 <nav class="site-nav">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">
@@ -234,6 +235,8 @@
 </div>
 
 <script>
+window.addEventListener('scroll',()=>{document.querySelector('.site-nav').classList.toggle('scrolled',window.scrollY>40);},{passive:true});
+document.addEventListener('scroll',()=>{const sp=document.getElementById('sp');if(sp){const h=document.documentElement;sp.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';}},{passive:true});
 const io = new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('up');io.unobserve(x.target);}}),{threshold:0.08});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 </script>
