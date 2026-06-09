@@ -14,23 +14,43 @@
 .officer-card {
   background: var(--white); border-radius: 18px;
   border: 1px solid var(--cream2); overflow: hidden;
-  transition: box-shadow 0.25s, transform 0.25s;
+  transition: box-shadow 0.3s cubic-bezier(.16,1,.3,1), transform 0.3s, border-color 0.3s;
+  position: relative;
 }
-.officer-card:hover { box-shadow: 0 20px 48px rgba(27,45,91,0.13); transform: translateY(-5px); }
+.officer-card:hover { box-shadow: 0 26px 56px rgba(27,45,91,0.18); transform: translateY(-7px); border-color: rgba(212,168,67,0.4); }
 .officer-card-top {
-  background: linear-gradient(135deg, var(--navy) 0%, #2a4a8a 100%);
-  padding: 2rem; text-align: center;
+  background: radial-gradient(ellipse 100% 120% at 50% 0%, #21356b 0%, var(--navy) 55%, #16264d 100%);
+  padding: 2.25rem 2rem; text-align: center;
   position: relative; overflow: hidden;
 }
 .officer-card-top::before {
   content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(212,168,67,0.15) 0%, transparent 60%);
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(212,168,67,0.18) 0%, transparent 60%);
+  animation: officerBreathe 6s ease-in-out infinite;
 }
+@keyframes officerBreathe { 0%,100%{opacity:0.6} 50%{opacity:1} }
+/* shine sweep on hover */
+.officer-card-top::after {
+  content: ''; position: absolute; top: 0; left: -130%;
+  width: 50%; height: 100%; transform: skewX(-20deg);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+  transition: left 0.7s; z-index: 2;
+}
+.officer-card:hover .officer-card-top::after { left: 180%; }
 .officer-avatar {
-  width: 64px; height: 64px; border-radius: 50%;
-  background: rgba(212,168,67,0.2); border: 2px solid rgba(212,168,67,0.4);
+  width: 72px; height: 72px; border-radius: 50%;
+  background: radial-gradient(circle at 50% 35%, rgba(212,168,67,0.35), rgba(212,168,67,0.12));
+  border: 2px solid rgba(212,168,67,0.45);
   display: flex; align-items: center; justify-content: center;
-  font-size: 1.6rem; margin: 0 auto 1rem; position: relative;
+  font-size: 1.8rem; margin: 0 auto 1.1rem; position: relative; z-index: 1;
+  box-shadow: 0 0 0 0 rgba(212,168,67,0.4);
+  animation: avatarPulse 3s ease-in-out infinite;
+  transition: transform 0.3s;
+}
+.officer-card:hover .officer-avatar { transform: scale(1.08) translateY(-2px); }
+@keyframes avatarPulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(212,168,67,0.35); }
+  50% { box-shadow: 0 0 22px 4px rgba(212,168,67,0.3); }
 }
 .officer-role-badge {
   display: inline-block;
@@ -38,7 +58,7 @@
   color: var(--gold); font-size: 0.65rem; font-weight: 700;
   letter-spacing: 0.12em; text-transform: uppercase;
   padding: 0.3rem 0.8rem; border-radius: 999px;
-  position: relative;
+  position: relative; z-index: 1;
 }
 .officer-card-bottom { padding: 1.5rem; }
 .officer-name {
@@ -59,16 +79,20 @@
 
 /* advisor card */
 .advisor-card {
-  background: linear-gradient(135deg, var(--navy) 0%, #2a4a8a 100%);
-  border-radius: 18px; padding: 2.5rem;
+  background: radial-gradient(ellipse 90% 130% at 0% 0%, #21356b 0%, var(--navy) 50%, #0d1830 100%);
+  border-radius: 18px; padding: 2.75rem;
   display: flex; align-items: center; gap: 2rem;
   margin-top: 2rem; flex-wrap: wrap;
+  position: relative; overflow: hidden;
 }
+.advisor-card > * { position: relative; z-index: 2; }
 .advisor-icon-wrap {
-  width: 72px; height: 72px; border-radius: 50%;
-  background: rgba(212,168,67,0.15); border: 2px solid rgba(212,168,67,0.3);
+  width: 76px; height: 76px; border-radius: 50%;
+  background: radial-gradient(circle at 50% 35%, rgba(212,168,67,0.35), rgba(212,168,67,0.1));
+  border: 2px solid rgba(212,168,67,0.4);
   display: flex; align-items: center; justify-content: center;
-  font-size: 2rem; flex-shrink: 0;
+  font-size: 2.1rem; flex-shrink: 0;
+  animation: avatarPulse 3s ease-in-out infinite;
 }
 .advisor-info .advisor-tag {
   font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em;
@@ -204,6 +228,11 @@
 
       <!-- ADVISOR -->
       <div class="advisor-card reveal">
+        <div class="aurora-bg" style="opacity:0.4">
+          <div class="aurora-blob b1"></div>
+          <div class="aurora-blob b2"></div>
+        </div>
+        <div class="grain"></div>
         <div class="advisor-icon-wrap">🏫</div>
         <div class="advisor-info">
           <div class="advisor-tag">Faculty Advisor</div>

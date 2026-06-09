@@ -25,15 +25,40 @@
 /* event cards big */
 .events-list { display: flex; flex-direction: column; gap: 1.5rem; }
 .event-big {
-  background: var(--white); border: 1px solid var(--cream2); border-radius: 16px;
-  display: grid; grid-template-columns: 180px 1fr; overflow: hidden;
-  transition: box-shadow 0.25s, transform 0.25s;
+  background: var(--white); border: 1px solid var(--cream2); border-radius: 18px;
+  display: grid; grid-template-columns: 200px 1fr; overflow: hidden;
+  transition: box-shadow 0.3s cubic-bezier(.16,1,.3,1), transform 0.3s, border-color 0.3s;
+  position: relative;
 }
-.event-big:hover { box-shadow: 0 16px 40px rgba(27,45,91,0.1); transform: translateY(-3px); }
+.event-big:hover {
+  box-shadow: 0 26px 56px rgba(27,45,91,0.16);
+  transform: translateY(-5px);
+  border-color: rgba(212,168,67,0.4);
+}
 .event-big-icon {
   display: flex; align-items: center; justify-content: center;
-  font-size: 3.5rem; min-height: 160px;
+  font-size: 3.8rem; min-height: 170px;
+  position: relative; overflow: hidden;
 }
+/* depth glow */
+.event-big-icon::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 70% at 50% 120%, rgba(255,255,255,0.5), transparent 60%);
+}
+/* shine sweep */
+.event-big-icon::after {
+  content: ''; position: absolute; top: 0; left: -130%;
+  width: 55%; height: 100%; transform: skewX(-20deg);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent);
+  transition: left 0.7s;
+}
+.event-big:hover .event-big-icon::after { left: 170%; }
+.event-big-icon .ei {
+  position: relative; z-index: 1;
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,0.2));
+  animation: iconFloat 4s ease-in-out infinite;
+}
+@keyframes iconFloat { 0%,100%{transform:translateY(0) rotate(-2deg)} 50%{transform:translateY(-8px) rotate(2deg)} }
 .event-big-body { padding: 2rem; }
 .event-meta-row { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
 .event-tag {
@@ -57,13 +82,15 @@
 
 /* summer banner */
 .summer-banner {
-  background: linear-gradient(135deg, var(--navy) 0%, #2a4a8a 100%);
-  border-radius: 16px; padding: 2.5rem; color: #fff; margin-bottom: 3rem;
+  background: radial-gradient(ellipse 90% 120% at 0% 0%, #21356b 0%, var(--navy) 50%, #0d1830 100%);
+  border-radius: 18px; padding: 2.75rem; color: #fff; margin-bottom: 3rem;
   display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;
+  position: relative; overflow: hidden;
 }
-.summer-banner-icon { font-size: 3rem; flex-shrink: 0; }
-.summer-banner h3 { font-family:'Fraunces',serif; font-size:1.5rem; font-weight:800; color:var(--gold); margin-bottom:0.4rem; }
-.summer-banner p { font-size:0.88rem; color:rgba(255,255,255,0.65); line-height:1.7; max-width:500px; }
+.summer-banner > * { position: relative; z-index: 2; }
+.summer-banner-icon { font-size: 3.2rem; flex-shrink: 0; animation: iconFloat 4s ease-in-out infinite; }
+.summer-banner h3 { font-family:'Fraunces',serif; font-size:1.6rem; font-weight:800; color:var(--gold); margin-bottom:0.4rem; }
+.summer-banner p { font-size:0.9rem; color:rgba(255,255,255,0.7); line-height:1.7; max-width:520px; }
 
 @media(max-width:700px){
   .event-big { grid-template-columns: 1fr; }
@@ -110,17 +137,22 @@
     <div class="container">
 
       <div class="summer-banner reveal">
+        <div class="aurora-bg" style="opacity:0.4">
+          <div class="aurora-blob b1"></div>
+          <div class="aurora-blob b2"></div>
+        </div>
+        <div class="grain"></div>
         <div class="summer-banner-icon">☀️</div>
         <div>
-          <h3>Summer 2026 Lineup</h3>
+          <h3 class="gradient-text">Summer 2026 Lineup</h3>
           <p>Our main events happen over the summer at C3 Milpitas. Officers are required to participate in all summer programs — members are strongly encouraged to sign up for at least one.</p>
         </div>
       </div>
 
       <div class="events-list">
 
-        <div class="event-big reveal">
-          <div class="event-big-icon" style="background:#dbeafe">🏀</div>
+        <div class="event-big spotlight reveal">
+          <div class="event-big-icon" style="background:linear-gradient(135deg,#60a5fa,#3b82f6)"><span class="ei">🏀</span></div>
           <div class="event-big-body">
             <div class="event-meta-row">
               <span class="event-tag">Summer · Sports</span>
@@ -136,8 +168,8 @@
           </div>
         </div>
 
-        <div class="event-big reveal">
-          <div class="event-big-icon" style="background:#ede9fe">📖</div>
+        <div class="event-big spotlight reveal">
+          <div class="event-big-icon" style="background:linear-gradient(135deg,#a78bfa,#7c3aed)"><span class="ei">📖</span></div>
           <div class="event-big-body">
             <div class="event-meta-row">
               <span class="event-tag">Summer · VBS</span>
@@ -153,8 +185,8 @@
           </div>
         </div>
 
-        <div class="event-big reveal">
-          <div class="event-big-icon" style="background:#d1fae5">🌞</div>
+        <div class="event-big spotlight reveal">
+          <div class="event-big-icon" style="background:linear-gradient(135deg,#34d399,#10b981)"><span class="ei">🌞</span></div>
           <div class="event-big-body">
             <div class="event-meta-row">
               <span class="event-tag">Summer · Camp</span>
@@ -170,8 +202,8 @@
           </div>
         </div>
 
-        <div class="event-big reveal">
-          <div class="event-big-icon" style="background:#fef9c3">🛒</div>
+        <div class="event-big spotlight reveal">
+          <div class="event-big-icon" style="background:linear-gradient(135deg,#fbbf24,#f59e0b)"><span class="ei">🛒</span></div>
           <div class="event-big-body">
             <div class="event-meta-row">
               <span class="event-tag">School Year · Drive</span>
@@ -223,6 +255,9 @@ window.addEventListener('scroll',()=>{document.querySelector('.site-nav').classL
 document.addEventListener('scroll',()=>{const sp=document.getElementById('sp');if(sp){const h=document.documentElement;sp.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';}},{passive:true});
 const io = new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('up');io.unobserve(x.target);}}),{threshold:0.08});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+document.querySelectorAll('.spotlight').forEach(card=>{
+  card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect();card.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');card.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%');});
+});
 </script>
 </body>
 </html>
