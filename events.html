@@ -47,12 +47,13 @@
 }
 /* shine sweep */
 .event-big-icon::after {
-  content: ''; position: absolute; top: 0; left: -130%;
-  width: 55%; height: 100%; transform: skewX(-20deg);
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 55%; height: 100%;
+  transform: translateX(-220%) skewX(-20deg);
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent);
-  transition: left 0.7s;
+  transition: transform 0.7s;
 }
-.event-big:hover .event-big-icon::after { left: 170%; }
+.event-big:hover .event-big-icon::after { transform: translateX(360%) skewX(-20deg); }
 .event-big-icon .ei {
   position: relative; z-index: 1;
   filter: drop-shadow(0 6px 12px rgba(0,0,0,0.2));
@@ -79,6 +80,17 @@
 .event-big-footer { margin-top:1.25rem; display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap; }
 .event-detail { font-size:0.78rem; color:var(--muted); display:flex; align-items:center; gap:0.4rem; }
 .event-detail strong { color:var(--navy); }
+.event-signup-btn {
+  display: inline-block; margin-top: 1.25rem;
+  background: var(--navy); color: #fff;
+  font-size: 0.85rem; font-weight: 700;
+  padding: 0.75rem 1.6rem; border-radius: 999px;
+  text-decoration: none; transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.event-signup-btn:hover {
+  background: var(--navy-d); transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(27,45,91,0.25);
+}
 
 /* summer banner */
 .summer-banner {
@@ -89,7 +101,7 @@
 }
 .summer-banner > * { position: relative; z-index: 2; }
 .summer-banner-icon { font-size: 3.2rem; flex-shrink: 0; animation: iconFloat 4s ease-in-out infinite; }
-.summer-banner h3 { font-family:'Fraunces',serif; font-size:1.6rem; font-weight:800; color:var(--gold); margin-bottom:0.4rem; }
+.summer-banner h2 { font-family:'Fraunces',serif; font-size:1.6rem; font-weight:800; color:var(--gold-lt); margin-bottom:0.4rem; }
 .summer-banner p { font-size:0.9rem; color:rgba(255,255,255,0.7); line-height:1.7; max-width:520px; }
 
 @media(max-width:700px){
@@ -144,8 +156,8 @@
         <div class="grain"></div>
         <div class="summer-banner-icon">☀️</div>
         <div>
-          <h3 class="gradient-text">Summer 2026 Lineup</h3>
-          <p>Our main events happen over the summer at C3 Milpitas. Officers are required to participate in all summer programs — members are strongly encouraged to sign up for at least one.</p>
+          <h2>Summer 2026 Lineup</h2>
+          <p>Our main events happen over the summer at C3 Milpitas. Officers are required to participate in all summer programs, and members are strongly encouraged to sign up for at least one.</p>
         </div>
       </div>
 
@@ -165,6 +177,7 @@
               <div class="event-detail">📍 <strong>Where:</strong> C3 Milpitas Campus</div>
               <div class="event-detail">👥 <strong>Ages:</strong> 4 years old – 6th grade grads</div>
             </div>
+            <a href="https://forms.fellowshipone.com/?formId=614f1ed2-a2c0-4ebf-ae6f-eb92413c6e28" target="_blank" rel="noopener" class="event-signup-btn">Sign Up for Sports Camp →</a>
           </div>
         </div>
 
@@ -193,7 +206,7 @@
               <span class="event-status"><span class="status-dot"></span>Planning in Progress</span>
             </div>
             <div class="event-big-title">Day Camp</div>
-            <div class="event-big-desc">A full-day adventure with lessons, field trips, and service opportunities — building faith, friendships, and leadership!</div>
+            <div class="event-big-desc">A full-day adventure with lessons, field trips, and service opportunities, building faith, friendships, and leadership!</div>
             <div class="event-big-footer">
               <div class="event-detail">📅 <strong>July 6–10</strong> · 9:00 AM – 4:00 PM</div>
               <div class="event-detail">📍 <strong>Where:</strong> C3 Milpitas Campus</div>
@@ -227,7 +240,7 @@
     <div class="container reveal">
       <div class="section-label">Get Involved</div>
       <h2 class="section-title" style="margin:0 auto 1rem">Want to sign up for events?</h2>
-      <p class="section-desc" style="margin:0 auto 2rem">Join the club first — once you're in, you'll get access to all event sign-up forms through Google Classroom and Google Chat.</p>
+      <p class="section-desc" style="margin:0 auto 2rem">Join the club first. Once you're in, you'll get access to all event sign-up forms through Google Classroom and Google Chat.</p>
       <a href="join.html" class="btn-gold" style="display:inline-block;background:var(--navy);color:#fff;padding:0.9rem 2.2rem;border-radius:999px;text-decoration:none;font-weight:700;font-size:0.9rem">Join the Club →</a>
     </div>
   </div>
@@ -252,7 +265,7 @@
 
 <script>
 window.addEventListener('scroll',()=>{document.querySelector('.site-nav').classList.toggle('scrolled',window.scrollY>40);},{passive:true});
-document.addEventListener('scroll',()=>{const sp=document.getElementById('sp');if(sp){const h=document.documentElement;sp.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';}},{passive:true});
+document.addEventListener('scroll',()=>{const sp=document.getElementById('sp');if(sp){const h=document.documentElement;sp.style.transform='scaleX('+(h.scrollTop/(h.scrollHeight-h.clientHeight))+')';}},{passive:true});
 const io = new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('up');io.unobserve(x.target);}}),{threshold:0.08});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 document.querySelectorAll('.spotlight').forEach(card=>{

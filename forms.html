@@ -10,10 +10,11 @@
 <style>
 .forms-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
   margin-top: 3rem;
 }
+@media (max-width: 920px) { .forms-grid { grid-template-columns: 1fr 1fr; } }
 
 .form-card {
   background: var(--white);
@@ -53,7 +54,7 @@
 .form-card-label {
   font-size: 0.65rem; font-weight: 700;
   letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--gold); margin-bottom: 0.5rem;
+  color: var(--gold-lt); margin-bottom: 0.5rem;
   position: relative;
 }
 .form-card-title {
@@ -159,7 +160,7 @@
       <div class="info-banner reveal">
         <div class="info-banner-icon">📋</div>
         <div>
-          <strong>How forms work:</strong> All forms are hosted on Google Forms. You'll need a Google account to submit. If you have trouble accessing a form, reach out to any officer listed on the <a href="officers.html" style="color:var(--navy);font-weight:600">Officers page</a>.
+          <strong>How forms work:</strong> Each form opens in a new tab. Some are hosted on Google Forms, others through C3 Milpitas. If you have trouble accessing a form, reach out to any officer listed on the <a href="officers.html" style="color:var(--navy);font-weight:600">Officers page</a>.
         </div>
       </div>
 
@@ -197,6 +198,69 @@
           </div>
         </div>
 
+        <!-- FORM 2: Sports Camp -->
+        <div class="form-card reveal reveal-delay-2">
+          <div class="form-card-top">
+            <div class="form-card-number">02</div>
+            <div class="form-icon">🏀</div>
+            <div class="form-card-label">C3 Milpitas</div>
+            <div class="form-card-title">Sports Camp Sign-Up</div>
+          </div>
+          <div class="form-card-body">
+            <p class="form-card-desc">
+              Official sign-up for the C3 Milpitas Sports Camp, June 22–26. A high-energy week of sports, teamwork, and fun for ages 4 through 6th grade grads.
+            </p>
+            <div class="form-details">
+              <div class="form-detail-row">
+                <span class="form-detail-label">When</span>
+                <span class="form-detail-val">June 22–26</span>
+              </div>
+              <div class="form-detail-row">
+                <span class="form-detail-label">Hosted by</span>
+                <span class="form-detail-val">C3 Milpitas</span>
+              </div>
+              <div class="form-detail-row">
+                <span class="form-detail-label">Ages</span>
+                <span class="form-detail-val">4 yrs – 6th grade grads</span>
+              </div>
+            </div>
+            <a href="https://forms.fellowshipone.com/?formId=614f1ed2-a2c0-4ebf-ae6f-eb92413c6e28" target="_blank" rel="noopener" class="btn-form-link">
+              Open Form <span class="btn-arrow">→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- FORM 3: Trojan Time Card -->
+        <div class="form-card reveal reveal-delay-3">
+          <div class="form-card-top">
+            <div class="form-card-number">03</div>
+            <div class="form-icon">⏱️</div>
+            <div class="form-card-label">Service Hours</div>
+            <div class="form-card-title">Trojan Time Card</div>
+          </div>
+          <div class="form-card-body">
+            <p class="form-card-desc">
+              The official MHS service-hours time card. Print it, log your volunteer hours, and get it signed to count toward your graduation requirement and the Maroon Cord.
+            </p>
+            <div class="form-details">
+              <div class="form-detail-row">
+                <span class="form-detail-label">Who it's for</span>
+                <span class="form-detail-val">All members</span>
+              </div>
+              <div class="form-detail-row">
+                <span class="form-detail-label">Use for</span>
+                <span class="form-detail-val">Logging service hours</span>
+              </div>
+              <div class="form-detail-row">
+                <span class="form-detail-label">Format</span>
+                <span class="form-detail-val">Printable document</span>
+              </div>
+            </div>
+            <a href="https://www.scribd.com/document/841275334/PAPER-Trojan-Time-Card" target="_blank" rel="noopener" class="btn-form-link">
+              View Document <span class="btn-arrow">→</span>
+            </a>
+          </div>
+        </div>
 
       </div>
     </div>
@@ -226,6 +290,8 @@
 </div>
 
 <script>
+const nav=document.querySelector('.site-nav'),sp=document.getElementById('sp');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>40);if(sp){const h=document.documentElement;sp.style.transform='scaleX('+(h.scrollTop/(h.scrollHeight-h.clientHeight))+')';}},{passive:true});
 const io = new IntersectionObserver(e => e.forEach(x => {
   if (x.isIntersecting) { x.target.classList.add('up'); io.unobserve(x.target); }
 }), { threshold: 0.1 });
